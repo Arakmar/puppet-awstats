@@ -1,4 +1,4 @@
-define awstats::add_vhost
+define awstats::vhost
 (
 	$ensure = present,
 	$domain = $name,
