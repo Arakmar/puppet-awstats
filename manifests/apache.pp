@@ -15,10 +15,10 @@ class awstats::apache (
             require => Package['awstats'],
             mode => 0640, owner => root, group => www-data;
         }
-        $conf_file = apache_htpasswd.conf
+        $conf_file = 'apache_htpasswd.conf'
     }
     else {
-        $conf_file = apache.conf
+        $conf_file = 'apache.conf'
     }
 
     file { "/etc/awstats/apache.conf":
@@ -32,7 +32,7 @@ class awstats::apache (
         owner   => root,
         group   => root,
         mode    => 0644,
-        notify  => [Exec["refresh_awstats"], Service['apache']]
+        notify  => [Exec["refresh_awstats"], Service['apache']],
         require => Package["awstats"];
     }
 
