@@ -28,11 +28,11 @@ class awstats::apache (
         file { 'awstats_htpasswd':
             path => "/etc/awstats/htpasswd.users",
             source =>
-                [ "puppet:///modules/site-awstats/configs/${::fqdn}/htpasswd.users",
-                "puppet:///modules/site-awstats/configs/${::operatingsystem}/htpasswd.users",
-                "puppet:///modules/site-awstats/configs/htpasswd.users",
-                "puppet:///modules/awstats/configs/${::operatingsystem}/htpasswd.users",
-                "puppet:///modules/awstats/configs/htpasswd.users" ],
+                [ "puppet:///modules/site-awstats/${::fqdn}/htpasswd.users",
+                "puppet:///modules/site-awstats/${::operatingsystem}/htpasswd.users",
+                "puppet:///modules/site-awstats/htpasswd.users",
+                "puppet:///modules/awstats/${::operatingsystem}/htpasswd.users",
+                "puppet:///modules/awstats/htpasswd.users" ],
             require => Package['awstats'],
             mode => 0640, owner => root, group => www-data;
         }
