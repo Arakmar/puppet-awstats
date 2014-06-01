@@ -1,4 +1,4 @@
 define awstats::collected_vhost()
 {
-	Awstats::Vhost <<| tag == $name |>>
+    Awstats::Vhost <<| tag == $name |>>
 }
