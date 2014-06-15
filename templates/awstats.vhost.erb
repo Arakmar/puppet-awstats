@@ -1,9 +1,26 @@
 # This file is managed by puppet
 # all local modifications will be overwritten
 #
-# awstats configuration of <%= domain %>:<%= port %>
+# awstats configuration of <%= @domain %>:<%= @port %>
 
 Include "/etc/awstats/awstats.conf"
-LogFile="<%= log_file %>"
-SiteDomain="<%= domain %>"
-HostAliases="<%= domain %>:<%= port %>"
+LogFile="<%= @log_file %>"
+LogType="<%= @log_type %>"
+SiteDomain="<%= @domain %>:<%= @port %>"
+HostAliases="<%= @host_aliases %>"
+DirData="<%= @dir_data %>"
+
+# We probably want more statistics rather than less. If nothing else, having 
+# everything enabled means less broken links in the awstats page.
+ShowDomainStats=1
+ShowHostsStats=1
+ShowAuthenticatedUsers=1
+ShowRobotsStats=1
+ShowSessionStats=1
+ShowPagesStats=1
+ShowOSStats=1
+ShowBrowserStats=1
+ShowOriginStats=1
+ShowKeyphrasesStats=1
+ShowKeywordStats=1
+ShowDownloadsStats=1

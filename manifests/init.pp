@@ -1,10 +1,15 @@
-class awstats {
+class awstats(
+    $use_cron     = false,
+    $cron_user    = 'root',
+    $cron_minute = [1],
+    $cron_hour   = undef,
+) inherits ::awstats::params {
     package { "awstats":
         ensure => installed
     }
     
     exec { "refresh_awstats":
-        command => 'perl /usr/share/doc/awstats/examples/awstats_updateall.pl now -awstatsprog=/usr/lib/cgi-bin/awstats.pl',
+        command => "${::awstats::params::awstats_updateall} now -awstatsprog=${::awstats::params::awstats}",
         refreshonly => true
     }
     
@@ -45,5 +50,17 @@ class awstats {
             purge   => true,
             notify  => Exec["refresh_awstats"],
             require => Package["awstats"];
+    }
+    
+    $cron_ensure = $use_cron ? {
+      true  => 'present',
+      false => 'absent'
+    }
+    cron { "awstats":
+        ensure  => $cron_ensure,
+        command => "${::awstats::params::awstats_updateall} now -awstatsprog=${::awstats::params::awstats}",
+        user    => $cron_user,
+        minute  => $cron_minute,
+        hour    => $cron_hour,
     }
 }
