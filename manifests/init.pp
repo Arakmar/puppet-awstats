@@ -58,7 +58,7 @@ class awstats(
     }
     cron { "awstats":
         ensure  => $cron_ensure,
-        command => "${::awstats::params::awstats_updateall} now -awstatsprog=${::awstats::params::awstats}",
+        command => "${::awstats::params::awstats_updateall} now -awstatsprog=${::awstats::params::awstats} > /dev/null",
         user    => $cron_user,
         minute  => $cron_minute,
         hour    => $cron_hour,
