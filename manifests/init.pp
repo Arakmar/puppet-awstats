@@ -12,14 +12,16 @@ class awstats(
         command => "${::awstats::params::awstats_updateall} now -awstatsprog=${::awstats::params::awstats}",
         refreshonly => true
     }
-    
+   
     file {
         "/etc/awstats/awstats.conf":
             ensure  => present,
             source => 
                 [ "puppet:///modules/site-awstats/${::fqdn}/awstats.conf",
+                "puppet:///modules/site-awstats/${::operatingsystem}/${::lsbdistcodename}/awstats.conf",
                 "puppet:///modules/site-awstats/${::operatingsystem}/awstats.conf",
                 "puppet:///modules/site-awstats/awstats.conf",
+                "puppet:///modules/awstats/${::operatingsystem}/${::lsbdistcodename}/awstats.conf",
                 "puppet:///modules/awstats/${::operatingsystem}/awstats.conf",
                 "puppet:///modules/awstats/awstats.conf" ],
             owner   => root,
@@ -32,7 +34,9 @@ class awstats(
             source => 
                 [ "puppet:///modules/site-awstats/${::fqdn}/awstats.conf.local",
                 "puppet:///modules/site-awstats/${::operatingsystem}/awstats.conf.local",
+                "puppet:///modules/site-awstats/${::operatingsystem}/${::lsbdistcodename}/awstats.conf.local",
                 "puppet:///modules/site-awstats/awstats.conf.local",
+                "puppet:///modules/awstats/${::operatingsystem}/${::lsbdistcodename}/awstats.conf.local",
                 "puppet:///modules/awstats/${::operatingsystem}/awstats.conf.local",
                 "puppet:///modules/awstats/awstats.local" ],
             owner   => root,
