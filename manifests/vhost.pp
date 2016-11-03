@@ -22,7 +22,7 @@ define awstats::vhost
         content => template("awstats/awstats.vhost.erb"),
         owner   => root,
         group   => root,
-        mode    => 0644,
+        mode    => '0644',
     }
     
     if $use_cron and $use_static_pages {

@@ -26,7 +26,7 @@ class awstats(
                 "puppet:///modules/awstats/awstats.conf" ],
             owner   => root,
             group   => root,
-            mode    => 0644,
+            mode    => '0644',
             notify  => Exec["refresh_awstats"],
             require => Package["awstats"];
         "/etc/awstats/awstats.conf.local":
@@ -41,14 +41,14 @@ class awstats(
                 "puppet:///modules/awstats/awstats.local" ],
             owner   => root,
             group   => root,
-            mode    => 0644,
+            mode    => '0644',
             notify  => Exec["refresh_awstats"],
             require => Package["awstats"];
         "/etc/awstats":
             ensure  => directory,
             owner   => root,
             group   => root,
-            mode    => 0755,
+            mode    => '755',
             force   => true,
             recurse => true,
             purge   => true,
