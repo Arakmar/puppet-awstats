@@ -17,10 +17,10 @@ class awstats(
         "/etc/awstats/awstats.conf":
             ensure  => present,
             source => 
-                [ "puppet:///modules/site-awstats/${::fqdn}/awstats.conf",
-                "puppet:///modules/site-awstats/${::operatingsystem}/${::lsbdistcodename}/awstats.conf",
-                "puppet:///modules/site-awstats/${::operatingsystem}/awstats.conf",
-                "puppet:///modules/site-awstats/awstats.conf",
+                [ "puppet:///modules/site_awstats/${::fqdn}/awstats.conf",
+                "puppet:///modules/site_awstats/${::operatingsystem}/${::lsbdistcodename}/awstats.conf",
+                "puppet:///modules/site_awstats/${::operatingsystem}/awstats.conf",
+                "puppet:///modules/site_awstats/awstats.conf",
                 "puppet:///modules/awstats/${::operatingsystem}/${::lsbdistcodename}/awstats.conf",
                 "puppet:///modules/awstats/${::operatingsystem}/awstats.conf",
                 "puppet:///modules/awstats/awstats.conf" ],
@@ -32,10 +32,10 @@ class awstats(
         "/etc/awstats/awstats.conf.local":
             ensure  => present,
             source => 
-                [ "puppet:///modules/site-awstats/${::fqdn}/awstats.conf.local",
-                "puppet:///modules/site-awstats/${::operatingsystem}/awstats.conf.local",
-                "puppet:///modules/site-awstats/${::operatingsystem}/${::lsbdistcodename}/awstats.conf.local",
-                "puppet:///modules/site-awstats/awstats.conf.local",
+                [ "puppet:///modules/site_awstats/${::fqdn}/awstats.conf.local",
+                "puppet:///modules/site_awstats/${::operatingsystem}/awstats.conf.local",
+                "puppet:///modules/site_awstats/${::operatingsystem}/${::lsbdistcodename}/awstats.conf.local",
+                "puppet:///modules/site_awstats/awstats.conf.local",
                 "puppet:///modules/awstats/${::operatingsystem}/${::lsbdistcodename}/awstats.conf.local",
                 "puppet:///modules/awstats/${::operatingsystem}/awstats.conf.local",
                 "puppet:///modules/awstats/awstats.local" ],
